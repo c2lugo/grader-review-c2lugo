@@ -58,10 +58,10 @@ public class TestListExamples {
     public void testFilter() {
         List<String> inputList = Arrays.asList("apple", "banana", "cherry", "date", "kiwi");
 
-        // Using a separate class for the StringChecker
-        StringChecker checker = new IsMoon();
+        // Using a built-in StringChecker
+        java.util.function.Predicate<String> checker = s -> s.equalsIgnoreCase("moon");
 
-        List<String> result = ListExamples.filter(checker, inputList);
+        List<String> result = ListExamples.filter(checker::test, inputList);
 
         List<String> expected = Arrays.asList("banana", "cherry");
         assertEquals(expected, result);
@@ -71,10 +71,10 @@ public class TestListExamples {
     public void testFilterEmptyList() {
         List<String> inputList = new ArrayList<>();
 
-        // Using a separate class for the StringChecker
-        StringChecker checker = new IsMoon();
+        // Using a built-in StringChecker
+        java.util.function.Predicate<String> checker = s -> s.equalsIgnoreCase("moon");
 
-        List<String> result = ListExamples.filter(checker, inputList);
+        List<String> result = ListExamples.filter(checker::test, inputList);
 
         assertTrue(result.isEmpty());
     }
