@@ -58,8 +58,8 @@ public class TestListExamples {
     public void testFilter() {
         List<String> inputList = Arrays.asList("apple", "banana", "cherry", "date", "kiwi");
 
-        // Using a lambda expression directly
-        StringChecker checker = s -> s.length() >= 5;
+        // Using a separate class for the StringChecker
+        StringChecker checker = new IsMoon();
 
         List<String> result = ListExamples.filter(checker, inputList);
 
@@ -71,11 +71,12 @@ public class TestListExamples {
     public void testFilterEmptyList() {
         List<String> inputList = new ArrayList<>();
 
-        // Using a lambda expression directly
-        StringChecker checker = s -> s.length() >= 5;
+        // Using a separate class for the StringChecker
+        StringChecker checker = new IsMoon();
 
         List<String> result = ListExamples.filter(checker, inputList);
 
         assertTrue(result.isEmpty());
     }
+
 }
