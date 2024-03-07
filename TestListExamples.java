@@ -57,18 +57,22 @@ public class TestListExamples {
     @Test
     public void testFilter() {
         List<String> inputList = Arrays.asList("apple", "banana", "cherry", "date", "kiwi");
-        StringChecker checker = new IsMoon(); // Use a concrete implementation of StringChecker
+
+        // Using a lambda expression directly
+        StringChecker checker = s -> s.length() >= 5;
 
         List<String> result = ListExamples.filter(checker, inputList);
 
-        List<String> expected = Arrays.asList("date");
+        List<String> expected = Arrays.asList("banana", "cherry");
         assertEquals(expected, result);
     }
 
     @Test
     public void testFilterEmptyList() {
         List<String> inputList = new ArrayList<>();
-        StringChecker checker = new IsMoon(); // Use a concrete implementation of StringChecker
+
+        // Using a lambda expression directly
+        StringChecker checker = s -> s.length() >= 5;
 
         List<String> result = ListExamples.filter(checker, inputList);
 
